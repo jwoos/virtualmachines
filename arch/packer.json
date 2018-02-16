@@ -1,0 +1,31 @@
+{
+	"variables": {},
+	"builders": [
+		{
+			"type": "virtualbox-iso",
+			"guest_os_type": "ArchLinux_64",
+			"iso_url": "http://mirror.rackspace.com/archlinux/iso/2018.02.01/archlinux-2018.02.01-x86_64.iso",
+			"iso_checksum": "003678c0216c7eacb3d7711a74206edb52fdb887",
+			"iso_checksum_url": "http://mirror.rackspace.com/archlinux/iso/2018.02.01/sha1sums.txt",
+			"iso_checksum_type": "sha1",
+			"ssh_username": "packer",
+			"ssh_password": "packer",
+			"shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+			"disk_size": 100000,
+			"guest_additions_mode": "disable",
+			"hard_drive_interface": "sata",
+			"hard_drive_nonrotational": false,
+			"hard_drive_discard": false,
+			"headless": true,
+			"http_directory": "",
+			"iso_interface": "sata",
+			"keep_registered": false,
+			"output_directory": "~/.packer",
+			"skip_export": false,
+			"vboxmanage": [
+				["modifyvm", "{{.Name}}", "--memory", "2048"],
+				["modifyvm", "{{.Name}}", "--cpus", "2"]
+			]
+		}
+	]
+}
